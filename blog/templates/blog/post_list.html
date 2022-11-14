@@ -1,16 +1,12 @@
 {% extends 'blog/base.html' %}
-
-<h1><a href=""> Мой блог</a></h1>
-
 {% block content %}
 {% for post in posts %}
-<div class="post">
-  <div class="date">
-    Опубликовано:
-    {{ post.published_date }}
-  </div>
-  <h1><a href="{%url 'post_detail' pk=post.pk%}">{{ post.title }}</a></h1>
-  <p>{{ post.text|linebreaksbr }}</p>
-</div>
+{% include 'blog/post.html' with post=post%}
 {% endfor %}
+НИЯУ МИФИ · © 2022
+{% endblock %}
+{% block footer %}
+<p class='text-muted'>
+  Количество посещений данной страницы: {{num_visits}}
+</p>
 {% endblock %}
