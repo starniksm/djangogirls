@@ -1,12 +1,14 @@
-<div class="post">
-    <div class="card">
-      <h5 class="card-header"><a href="{%url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h5>
-      <div class="card-body">
-        <h5 class="card-title">{{ post.text|linebreaksbr }}</h5>
-        <p class="card-text">Опубликовано:
-          {{ post.published_date }}</p>
-          <a class="btn btn-primary" href="{% url 'post_edit' pk=post.pk %}">
-        <button type="submit" class="btn btn-primary">Редактировать</button>
-        </a>
+
+<div class="card my-2">
+  <div class="card-body">
+    <h1 class="card-title" style="color:orange"><a href="{%url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+    <h6 class="card-text">{{ post.text|linebreaksbr }}</h6>
+          {%if user.get_username %}
+            <a class="card-link" href="{%url 'post_detail' pk=post.pk %}">
+              <i class="bi-pencil-square"></i>Редактировать
+            </a>
+          {%endif%}     
   </div>
+
+    <div class="card-footer">{{ post.published_date }}</div>
   </div>
