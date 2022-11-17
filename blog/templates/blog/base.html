@@ -23,8 +23,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="/">Мой блог</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -40,7 +39,7 @@
                 <li class="nav-item">
 
                 {%if user.get_username %} 
-                <li class = "nav-item"><spanclass> {{user.get_username}} </spanclass>
+                <li class = "nav-item"> {{user.get_username}}
                   <a href="{%url 'logout'%}" class="nav-link">Выйти</a>
                 </li>
                 {%else%}
@@ -60,14 +59,12 @@
   </nav>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <div class="content container">
         <div class="row">
           <div class="col-md-12">
             {%block content%}
             {%endblock%}
           </div>
         </div>
-      </div>
     </div>
   </nav>
 </body>
