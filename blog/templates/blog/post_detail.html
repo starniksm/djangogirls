@@ -5,4 +5,17 @@
     <i class="bi-pencil-square"></i>
 </a>
 {% include 'blog/post.html' with post=post%}
+
+<h3>Комментарии</h3>
+{%if comments%}
+{%for comment in comments%}
+{% include 'blog/comment.html' with comment=comment%}
+{%endfor%}
+{%else%}
+<div class="alert alert-info"> Комментарии не найдены</div>
+{%endif%}
+<a href="{% url 'comment_new' pk=post.pk %}" class="btn btn-primary">
+  Добавить комментарий
+</a>
+
 {% endblock %}

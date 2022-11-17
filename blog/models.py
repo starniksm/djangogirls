@@ -15,4 +15,19 @@ class Post(models.Model):
         self.save()
 
     def __str__(self):
-        return self.title   
+        return self.title
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    text = models.TextField(verbose_name="Текст комментария")
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        ordering = ["-created_date"]
