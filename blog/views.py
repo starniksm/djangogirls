@@ -4,6 +4,8 @@ from .models import Post, Comment
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PostForm, CommentForm
 from django.core.exceptions import PermissionDenied
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
 
 
 def post_detail(request, pk):
@@ -76,3 +78,9 @@ def comment_edit(request, pk):
     else:
         form = CommentForm(instance=comment)
     return render(request, 'blog/comment_edit.html', {'form': form})
+
+class CommentDelete(DeleteView):
+    model = Comment
+
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs={'pk': self.object.post.pk})

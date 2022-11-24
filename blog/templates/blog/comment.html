@@ -2,23 +2,19 @@
     <div class="card-body">
         <p class="card-text">
             {{ comment.text|linebreaksbr }}        
-        </p>        
-        <p class="card-text">
+        </p>   
+          {%if user.get_username %}
+            <a href="{%url 'comment_edit' pk=comment.pk %}">
+              <i class="bi-pencil-square"></i>Редактировать
+            </a>
+          {%endif%}  
+          <p class="card-text">
             <small class="text-muted">
                 <i class="bi bi-clock"></i>
                 {{comment.created_date}}
                 <i class="bi bi-person-fill"></i>
                 {{comment.author.username}}                
             </small>
-        </p>
-
-
-          {%if user.get_username %}
-            <a class="card-link" href="{%url 'comment_edit' pk=comment.pk %}">
-              <i class="bi-pencil-square"></i>Редактировать
-            </a>
-          {%endif%}  
-
-  </div>
+          </p>
     </div>
 </div>

@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h1>Вы действительно хотите удалить комментарий?</h1>
+<form method="POST">
+  {% csrf_token %}   
+  <button type="submit" class="btn btn-primary">Да</button>
+</form>
+{% endblock %}
